@@ -10,5 +10,10 @@ bucket = ".output/public"
 entry-point = ".output"
 
 [build]
-command = "NITRO_PRESET=cloudflare npm run build"
+#command = "NITRO_PRESET=cloudflare npm run build"
+command = "npm run build"
 upload.format = "service-worker"
+
+[env.production]
+main = ".output/server/index.mjs"
+

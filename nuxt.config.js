@@ -1,11 +1,18 @@
-export default {
+export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
 
   // サーバーサイドレンダリング（SSR）を有効にする
   ssr: true,
 
-  // ターゲットをサーバーサイドに設定
-  target: 'server',
+  // Nuxt 4 互換モードの有効化
+  future: {
+    compatibilityVersion: 4,
+  },
+
+  // Nitro設定（Cloudflare Workers用）
+  nitro: {
+    preset: 'cloudflare', // Cloudflare Workers向けに設定
+  },
 
   head: {
     title: 'n3',
@@ -43,7 +50,20 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend(config, { isDev, isClient }) {
+      if (isClient) {
+	 // 必要であればカスタマイズ（通常は不要）
+      }
+    }
   },
 
+//  vite: {
+//    resolve: {
+//      alias: {
+//        '#app-manifest': '/path/to/app-manifest', // 実際のパスを指定する
+//      }
+//    }
+//  },
+
   compatibilityDate: '2025-01-09'
-};
+});
