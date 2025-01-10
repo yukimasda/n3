@@ -1,11 +1,11 @@
+<script setup>
+// 必要な状態や関数をここで定義
+const exampleData = ref('example')
+</script>
+
 <template>
-  <Tutorial/>
+  <div>
+    {{ exampleData }}
+  </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-
-export default Vue.extend({
-  name: 'IndexPage'
-})
-</script>

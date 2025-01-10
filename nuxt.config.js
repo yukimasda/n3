@@ -1,5 +1,12 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+
+  // サーバーサイドレンダリング（SSR）を有効にする
+  ssr: true,
+
+  // ターゲットをサーバーサイドに設定
+  target: 'server',
+
   head: {
     title: 'n3',
     meta: [
@@ -32,31 +39,11 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
-    // https://go.nuxtjs.dev/content
-    '@nuxt/content',
   ],
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
-  },
-
-  // PWA module configuration: https://go.nuxtjs.dev/pwa
-  pwa: {
-    manifest: {
-      lang: 'en'
-    }
-  },
-
-  // Content module configuration: https://go.nuxtjs.dev/config-content
-  content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
-}
+  },
+
+  compatibilityDate: '2025-01-09'
+};
