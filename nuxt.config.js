@@ -1,5 +1,19 @@
-export default {
+export default defineNuxtConfig({
   // Global page headers: https://go.nuxtjs.dev/config-head
+
+  // サーバーサイドレンダリング（SSR）を有効にする
+  ssr: true,
+
+  // Nuxt 4 互換モードの有効化
+  future: {
+    compatibilityVersion: 4,
+  },
+
+  // Nitro設定（Cloudflare Workers用）
+  nitro: {
+    preset: 'cloudflare', // Cloudflare Workers向けに設定
+  },
+
   head: {
     title: 'n3',
     meta: [
@@ -32,31 +46,24 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
-    '@nuxtjs/pwa',
-    // https://go.nuxtjs.dev/content
-    '@nuxt/content',
   ],
-
-  // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {
-    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
-  },
-
-  // PWA module configuration: https://go.nuxtjs.dev/pwa
-  pwa: {
-    manifest: {
-      lang: 'en'
-    }
-  },
-
-  // Content module configuration: https://go.nuxtjs.dev/config-content
-  content: {},
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
-}
+    extend(config, { isDev, isClient }) {
+      if (isClient) {
+	 // 必要であればカスタマイズ（通常は不要）
+      }
+    }
+  },
+
+//  vite: {
+//    resolve: {
+//      alias: {
+//        '#app-manifest': '/path/to/app-manifest', // 実際のパスを指定する
+//      }
+//    }
+//  },
+
+  compatibilityDate: '2025-01-09'
+});

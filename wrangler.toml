@@ -1,0 +1,19 @@
+name = "n3"
+type = "typescript"
+account_id = "04152eb91dc7771b6f8d0087c50a6436"
+workers_dev = true
+route = ""
+zone_id = ""
+
+[site]
+bucket = ".output/public"
+entry-point = ".output"
+
+[build]
+#command = "NITRO_PRESET=cloudflare npm run build"
+command = "npm run build"
+upload.format = "service-worker"
+
+[env.production]
+main = ".output/server/index.mjs"
+
